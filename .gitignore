@@ -1,33 +1,102 @@
-# Gradle files
-.gradle/
-build/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogecoin Depozit Sistemi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .action-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .action-button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 500px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dogecoin Depozit Sistemi</h1>
+    <p>Aşağıdaki seçeneklerden birine tıklayarak yatırım yapabilirsiniz:</p>
 
-# Local configuration file (sdk path, etc)
-local.properties
+    <div class="container">
+        <h2>Dogecoin Yatırma Planları</h2>
+        <button class="action-button" onclick="openDepositPage(1, 0.5)">1 DOGE (Günlük 0.5 DOGE Kazanç)</button>
+        <button class="action-button" onclick="openDepositPage(3, 1.5)">3 DOGE (Günlük 1.5 DOGE Kazanç)</button>
+        <button class="action-button" onclick="openDepositPage(10, 6)">10 DOGE (Günlük 6 DOGE Kazanç)</button>
+    </div>
 
-# Log/OS Files
-*.log
+    <script>
+        function openDepositPage(amount, dailyEarnings) {
+            // Yeni bir sayfa oluştur
+            const depositPage = window.open('', '_blank');
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-output.json
-
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
-
-# Keystore files
-*.jks
-*.keystore
-
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
-# Android Profiling
-*.hprof
+            // Yeni sayfanın içeriğini doldur
+            depositPage.document.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Yatırım Talimatları</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        .container {
+                            margin: 20px auto;
+                            width: 80%;
+                            max-width: 500px;
+                            padding: 20px;
+                            border: 1px solid #ccc;
+                            border-radius: 10px;
+                            background-color: #f9f9f9;
+                        }
+                        .action-button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 20px;
+                            font-size: 14px;
+                            border: none;
+                            cursor: pointer;
+                            margin: 10px;
+                        }
+                        .action-button:hover {
+                            background-color: #45a049;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Yatırım Talimatları</h1>
+                    <div class="container">
+                        <p><strong>${amount} DOGE</strong> yatırarak günlük <strong>${dailyEarnings} DOGE</strong> kazanacaksınız.</p>
+                        <p>Yatırımınızı onayladıktan sonra kazancınız otomatik olarak işlenecektir.</p>
+                        <button class="action-button" onclick="window.close()">Kapat</button>
+                    </div>
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</body>
+</html>
